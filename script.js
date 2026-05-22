@@ -1,40 +1,36 @@
-// Navbar height fix
-const navHeight = document.querySelector('.navbar').offsetHeight;
+// Mobile menu
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
+toggle.onclick = () => nav.classList.toggle('active');
 
-        const target = document.querySelector(this.getAttribute('href'));
-
-        window.scrollTo({
-            top: target.offsetTop - navHeight,
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Active link on scroll
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
 
 window.addEventListener('scroll', () => {
-    let current = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - navHeight - 50;
-
-        if (scrollY >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+    reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add('active');
         }
     });
 });
+
+// Typing effect
+const text = ["Frontend Developer", "UI Designer", "JavaScript Developer"];
+let i = 0, j = 0, current = "", isDeleting = false;
+const typing = document.querySelector(".typing");
+
+function type() {
+    current = text[i];
+    typing.textContent = current.substring(0, j);
+
+    if (!isDeleting && j < current.length) j++;
+    else if (isDeleting && j > 0) j--;
+    else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % text.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+type();

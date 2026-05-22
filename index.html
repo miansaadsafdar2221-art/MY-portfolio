@@ -1,88 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saad Safdar | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saad Safdar | Portfolio</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Navbar -->
 <header class="navbar">
-    <div class="container">
+    <div class="container nav-container">
         <h1 class="logo">Saad.</h1>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="menu-toggle">☰</div>
     </div>
 </header>
 
-<!-- Hero -->
+<!-- HERO -->
 <section id="home" class="hero">
-    <div class="container">
-        <h2>Hello, I'm <span>Saad Safdar</span> 👋</h2>
-        <p class="subtitle">Frontend Developer | HTML • CSS • JavaScript</p>
-        <a href="#projects" class="btn">View My Work</a>
+    <div class="container hero-content">
+        <h2>Hi, I'm <span class="highlight">Saad Safdar</span></h2>
+        <h3 class="typing"></h3>
+        <p>I build modern, high-performance web experiences.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn">View Work</a>
+            <a href="#contact" class="btn-outline">Contact Me</a>
+        </div>
     </div>
 </section>
 
-<!-- About -->
-<section id="about" class="section">
+<!-- ABOUT -->
+<section id="about" class="section reveal">
     <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-text">
-            I build modern, responsive, and user-friendly web experiences.
-        </p>
+        <h2>About Me</h2>
+        <p>I specialize in building responsive, interactive, and modern web apps.</p>
     </div>
 </section>
 
-<!-- Projects -->
-<section id="projects" class="section">
+<!-- PROJECTS -->
+<section id="projects" class="section reveal">
     <div class="container">
-        <h2 class="section-title">Projects</h2>
+        <h2>Projects</h2>
 
         <div class="projects-grid">
 
             <div class="project-card">
-                <h3>Portfolio Website</h3>
-                <p>Modern responsive portfolio design.</p>
-                <button class="card-btn">View</button>
+                <div class="card-overlay"></div>
+                <h3>Portfolio</h3>
+                <p>Advanced UI portfolio</p>
             </div>
 
             <div class="project-card">
+                <div class="card-overlay"></div>
                 <h3>Todo App</h3>
-                <p>Task manager using JavaScript.</p>
-                <button class="card-btn">View</button>
+                <p>JS productivity tool</p>
             </div>
 
             <div class="project-card">
-                <h3>Landing Page</h3>
-                <p>Clean UI landing page.</p>
-                <button class="card-btn">View</button>
+                <div class="card-overlay"></div>
+                <h3>Dashboard</h3>
+                <p>Analytics UI</p>
             </div>
 
         </div>
     </div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="section contact">
+<!-- CONTACT -->
+<section id="contact" class="section reveal">
     <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p>Email: your@email.com</p>
+        <h2>Contact</h2>
+        <p>Let’s build something great together.</p>
         <a href="#" class="btn">Send Message</a>
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
+<footer>
     <p>© 2026 Saad Safdar</p>
 </footer>
 
