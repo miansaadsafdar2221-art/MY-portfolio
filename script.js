@@ -4,7 +4,8 @@ const nav = document.querySelector('.nav-links');
 
 toggle.onclick = () => nav.classList.toggle('active');
 
-// Scroll reveal
+
+// Scroll reveal animation
 const reveals = document.querySelectorAll('.reveal');
 
 window.addEventListener('scroll', () => {
@@ -15,9 +16,11 @@ window.addEventListener('scroll', () => {
     });
 });
 
+
 // Typing effect
 const text = ["Frontend Developer", "UI Designer", "JavaScript Developer"];
 let i = 0, j = 0, current = "", isDeleting = false;
+
 const typing = document.querySelector(".typing");
 
 function type() {
@@ -33,4 +36,5 @@ function type() {
 
     setTimeout(type, isDeleting ? 50 : 100);
 }
+
 type();
