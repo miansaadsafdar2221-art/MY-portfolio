@@ -5,6 +5,13 @@ const nav = document.querySelector('.nav-links');
 toggle.onclick = () => nav.classList.toggle('active');
 
 
+// Navbar shadow on scroll
+window.addEventListener("scroll", () => {
+    document.querySelector(".navbar")
+        .classList.toggle("scrolled", window.scrollY > 50);
+});
+
+
 // Scroll reveal animation
 const reveals = document.querySelectorAll('.reveal');
 
