@@ -1,26 +1,21 @@
-// Smooth scrolling with offset (for sticky navbar)
-const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+// Navbar height fix
+const navHeight = document.querySelector('.navbar').offsetHeight;
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function (e) {
+    link.addEventListener('click', function(e) {
         e.preventDefault();
 
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
+        const target = document.querySelector(this.getAttribute('href'));
 
-        if (targetSection) {
-            const sectionTop = targetSection.offsetTop - navHeight;
-
-            window.scrollTo({
-                top: sectionTop,
-                behavior: 'smooth'
-            });
-        }
+        window.scrollTo({
+            top: target.offsetTop - navHeight,
+            behavior: 'smooth'
+        });
     });
 });
 
-
-// Active link highlight (scroll spy)
+// Active link on scroll
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -29,9 +24,8 @@ window.addEventListener('scroll', () => {
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop - navHeight - 50;
-        const sectionHeight = section.clientHeight;
 
-        if (pageYOffset >= sectionTop) {
+        if (scrollY >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
