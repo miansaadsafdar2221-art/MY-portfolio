@@ -1,22 +1,19 @@
-// GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// HERO animation
-gsap.from(".hero-text", {
+gsap.from(".left",{
     y:50,
     opacity:0,
     duration:1
 });
 
-gsap.from(".hero-img", {
+gsap.from(".right",{
     scale:0.8,
     opacity:0,
     duration:1,
     delay:0.3
 });
 
-// SCROLL animation
-gsap.from(".card", {
+gsap.from(".card",{
     scrollTrigger:{
         trigger:".grid",
         start:"top 80%"
@@ -26,21 +23,19 @@ gsap.from(".card", {
     stagger:0.2
 });
 
-// CURSOR
-const cursor = document.querySelector(".cursor");
+const cursor=document.querySelector(".cursor");
 
-document.addEventListener("mousemove", (e) => {
-    cursor.style.top = e.clientY + "px";
-    cursor.style.left = e.clientX + "px";
+document.addEventListener("mousemove",(e)=>{
+    cursor.style.top=e.clientY+"px";
+    cursor.style.left=e.clientX+"px";
 });
 
-// CURSOR HOVER EFFECT
-document.querySelectorAll("a").forEach(el => {
-    el.addEventListener("mouseenter", () => {
-        cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
+document.querySelectorAll("a").forEach(el=>{
+    el.addEventListener("mouseenter",()=>{
+        cursor.style.transform="translate(-50%,-50%) scale(1.8)";
     });
 
-    el.addEventListener("mouseleave", () => {
-        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    el.addEventListener("mouseleave",()=>{
+        cursor.style.transform="translate(-50%,-50%) scale(1)";
     });
 });
