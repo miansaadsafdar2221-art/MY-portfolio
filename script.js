@@ -1,28 +1,46 @@
-// Mobile menu
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav-links');
+// GSAP
+gsap.registerPlugin(ScrollTrigger);
 
-toggle.onclick = () => nav.classList.toggle('active');
+// HERO animation
+gsap.from(".hero-text", {
+    y:50,
+    opacity:0,
+    duration:1
+});
 
+gsap.from(".hero-img", {
+    scale:0.8,
+    opacity:0,
+    duration:1,
+    delay:0.3
+});
 
-// Typing effect
-const text = ["Frontend Developer", "UI Designer", "JavaScript Developer"];
-let i = 0, j = 0, current = "", isDeleting = false;
+// SCROLL animation
+gsap.from(".card", {
+    scrollTrigger:{
+        trigger:".grid",
+        start:"top 80%"
+    },
+    y:50,
+    opacity:0,
+    stagger:0.2
+});
 
-const typing = document.querySelector(".typing");
+// CURSOR
+const cursor = document.querySelector(".cursor");
 
-function type() {
-    current = text[i];
-    typing.textContent = current.substring(0, j);
+document.addEventListener("mousemove", (e) => {
+    cursor.style.top = e.clientY + "px";
+    cursor.style.left = e.clientX + "px";
+});
 
-    if (!isDeleting && j < current.length) j++;
-    else if (isDeleting && j > 0) j--;
-    else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) i = (i + 1) % text.length;
-    }
+// CURSOR HOVER EFFECT
+document.querySelectorAll("a").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+        cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
+    });
 
-    setTimeout(type, isDeleting ? 50 : 100);
-}
-
-type();
+    el.addEventListener("mouseleave", () => {
+        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    });
+});
