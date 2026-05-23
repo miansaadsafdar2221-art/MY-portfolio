@@ -5,25 +5,6 @@ const nav = document.querySelector('.nav-links');
 toggle.onclick = () => nav.classList.toggle('active');
 
 
-// Navbar shadow on scroll
-window.addEventListener("scroll", () => {
-    document.querySelector(".navbar")
-        .classList.toggle("scrolled", window.scrollY > 50);
-});
-
-
-// Scroll reveal animation
-const reveals = document.querySelectorAll('.reveal');
-
-window.addEventListener('scroll', () => {
-    reveals.forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-            el.classList.add('active');
-        }
-    });
-});
-
-
 // Typing effect
 const text = ["Frontend Developer", "UI Designer", "JavaScript Developer"];
 let i = 0, j = 0, current = "", isDeleting = false;
