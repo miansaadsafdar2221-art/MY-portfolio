@@ -1,165 +1,173 @@
-:root {
-    --bg:#020617;
-    --primary:#6366f1;
-    --accent:#22d3ee;
-    --text:#e2e8f0;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ================= GLOBAL ENHANCEMENTS ================= */
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background: radial-gradient(circle at 20% 20%, #0f172a, #020617);
-    color:var(--text);
+    overflow-x:hidden;
 }
 
-/* 🔥 CONTAINER (MAIN FIX) */
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
+/* Custom Scrollbar */
+::-webkit-scrollbar{
+    width:8px;
+}
+::-webkit-scrollbar-track{
+    background:#020617;
+}
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--primary),var(--accent));
+    border-radius:10px;
 }
 
-/* NAV */
+/* ================= NAVBAR UPGRADE ================= */
 .navbar{
     position:fixed;
     width:100%;
-    background:rgba(0,0,0,0.4);
-    backdrop-filter:blur(10px);
+    z-index:1000;
+    transition:0.3s ease;
 }
 
-.nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 0;
+.navbar.scrolled{
+    background:rgba(2,6,23,0.9);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-.logo{
-    color:var(--accent);
-}
-
-.nav ul{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
-
-/* HERO GRID (MAIN FIX) */
-.hero{
-    padding-top:120px;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    gap:60px;
-}
-
-/* LEFT */
-.badge{
-    background:rgba(34,211,238,0.1);
-    padding:6px 14px;
-    border-radius:20px;
-}
-
-.title{
-    font-size:50px;
-    margin-top:10px;
-}
-
-.title span{
-    background:linear-gradient(45deg,var(--accent),var(--primary));
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.sub{
-    margin-top:10px;
-    opacity:0.7;
-}
-
-.buttons{
-    margin-top:20px;
-}
-
-.btn{
-    background:linear-gradient(45deg,var(--primary),var(--accent));
-    padding:12px 25px;
-    border-radius:30px;
-}
-
-.btn-outline{
-    border:1px solid var(--accent);
-    padding:12px 25px;
-    border-radius:30px;
-    margin-left:10px;
-}
-
-/* RIGHT */
-.right{
-    display:flex;
-    justify-content:center;
+/* Nav hover underline animation */
+.nav ul li a{
     position:relative;
+    text-decoration:none;
+    color:var(--text);
 }
 
-.right img{
-    width:260px;
-    height:260px;
-    border-radius:50%;
-}
-
-.glow{
+.nav ul li a::after{
+    content:'';
     position:absolute;
-    width:280px;
-    height:280px;
-    background:radial-gradient(circle,var(--primary),transparent);
-    filter:blur(90px);
+    width:0%;
+    height:2px;
+    bottom:-5px;
+    left:0;
+    background:var(--accent);
+    transition:0.3s;
 }
 
-/* SECTION */
-.section{
-    padding:100px 0;
-    text-align:center;
+.nav ul li a:hover::after{
+    width:100%;
 }
 
-.section-title{
-    margin-bottom:40px;
+/* ================= HERO ENHANCEMENT ================= */
+.title{
+    font-size:55px;
+    line-height:1.1;
 }
 
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+/* Glow pulse animation */
+.glow{
+    animation:pulse 4s infinite ease-in-out;
 }
 
-.card{
-    height:300px;
-    border-radius:20px;
-    overflow:hidden;
+@keyframes pulse{
+    0%{transform:scale(1); opacity:0.7;}
+    50%{transform:scale(1.2); opacity:1;}
+    100%{transform:scale(1); opacity:0.7;}
+}
+
+/* Floating image */
+.right img{
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0px);}
+}
+
+/* ================= BUTTONS ================= */
+.btn, .btn-outline{
+    transition:0.3s ease;
     position:relative;
+    overflow:hidden;
 }
 
-.card img{
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(99,102,241,0.4);
+}
+
+.btn-outline:hover{
+    background:var(--accent);
+    color:#000;
+}
+
+/* ================= PROJECT CARDS ================= */
+.card{
+    transition:0.4s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* Overlay animation */
+.overlay{
+    position:absolute;
+    bottom:0;
+    left:0;
     width:100%;
     height:100%;
-    object-fit:cover;
+    background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    opacity:0;
+    transition:0.4s;
 }
 
-/* MOBILE FIX */
-@media(max-width:900px){
-    .hero-grid{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
+.overlay h3{
+    margin-bottom:20px;
+    transform:translateY(20px);
+    transition:0.3s;
+}
 
-    .grid{
-        grid-template-columns:1fr;
-    }
+.card:hover .overlay{
+    opacity:1;
+}
+
+.card:hover .overlay h3{
+    transform:translateY(0);
+}
+
+/* ================= CURSOR ================= */
+.cursor{
+    width:10px;
+    height:10px;
+    background:white;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    z-index:999;
+}
+
+.cursor-blur{
+    width:200px;
+    height:200px;
+    background:rgba(99,102,241,0.2);
+    border-radius:50%;
+    position:fixed;
+    filter:blur(80px);
+    pointer-events:none;
+    z-index:998;
+}
+
+/* ================= SECTION FADE ================= */
+.section{
+    opacity:0;
+    transform:translateY(50px);
+    transition:0.6s ease;
+}
+
+.section.show{
+    opacity:1;
+    transform:translateY(0);
 }
