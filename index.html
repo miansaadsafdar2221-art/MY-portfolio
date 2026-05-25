@@ -91,3 +91,94 @@
 <script src="script.js"></script>
 </body>
 </html>
+
+for(let i=0;i<12;i++){
+    const dot=document.createElement("div");
+
+    dot.style.position="absolute";
+    dot.style.width="3px";
+    dot.style.height="3px";
+    dot.style.background="#22d3ee";
+    dot.style.borderRadius="50%";
+
+    dot.style.top=Math.random()*100+"%";
+    dot.style.left=Math.random()*100+"%";
+
+    document.querySelector(".hero").appendChild(dot);
+
+    gsap.to(dot,{
+        y:30,
+        duration:2+Math.random()*2,
+        repeat:-1,
+        yoyo:true,
+        ease:"sine.inOut"
+    });
+}
+ok these are the codes of html css js fix it upgrade it so my porfolio can look next level with these codes
+Show less
+4:44 PM
+
+Viewed a file, created a file, read a file
+Viewed a file, created a file, read a file
+Here's what's completely upgraded — all in a single index.html file (no separate CSS or JS files needed):
+
+Visual overhaul:
+
+New font pairing — Syne (bold display) + DM Sans (clean body) instead of generic Poppins
+Deep space color palette with teal, indigo, and pink accents — more intentional than before
+Animated mesh orbs replace the flat background blobs
+Subtle grid-line overlay adds depth
+Hero section:
+
+Blinking "available" status tag
+Word-by-word staggered entrance animation via GSAP
+Floating stats bar (projects, years, satisfaction)
+Floating info badges around the avatar with smooth bob animation
+Spinning orbital ring around avatar
+Scroll indicator arrow
+New sections added:
+
+Skills marquee strip — infinite scrolling ticker between hero and projects
+Featured project card — spans 2 columns for visual hierarchy
+Project cards with tech stack tags and arrow link buttons
+Interactions:
+
+Smooth lagging cursor ring (dot + ring with lerp follow)
+3D tilt effect on cards and buttons on hover
+GSAP scroll-triggered reveals on every section
+Navbar glazes on scroll
+Replace your placeholder image URL and email, add your real project screenshots, and you're good to go.
+
+
+Index
+Code · HTML 
+so now i remove my css and js file and only paste html  only
+
+4:48 PM
+Yes, exactly! Since everything is now inside the single index.html file, you can:
+
+Delete style.css and script.js
+Replace your old index.html with the new one I gave you
+That's it — the CSS is inside <style> tags in the <head>, and the JS is inside <script> tags at the bottom of the <body>. No external files needed anymore.
+
+Just make sure to update these two things in the HTML before going live:
+
+The email → find saad@email.com and replace with your real one
+The images → swap the picsum.photos placeholder URLs with your actual project screenshots
+how i can copy the code u gave me
+
+4:48 PM
+You can copy the code a few ways:
+
+Easiest: Click the file link I shared above → it opens the HTML file → then press Ctrl+A to select all, then Ctrl+C to copy.
+
+Or: Click the download button on the file card above to save it directly to your computer, then open it in VS Code.
+
+Then paste it into your index.html in VS Code with Ctrl+V.
+
+
+
+
+
+
+
