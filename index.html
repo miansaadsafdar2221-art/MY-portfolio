@@ -3,121 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Saad Safdar | Portfolio</title>
-
+<title>Saad Safdar | Frontend Developer</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
 
-<div class="cursor"></div>
-<div class="cursor-blur"></div>
+<!-- CURSOR -->
+<div class="cursor-dot" id="dot"></div>
+<div class="cursor-ring" id="ring"></div>
 
-<header class="navbar">
-    <div class="container nav">
-        <h2 class="logo">Saad.</h2>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
+<!-- NAV -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="logo">Saad<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="container hero-grid">
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-        <div class="left">
-            <p class="badge">Frontend Developer</p>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        Frontend Developer
+      </div>
 
-            <h1 class="title">
-                Crafting <br>
-                <span>Next-Level Digital Experiences</span>
-            </h1>
+      <h1 class="hero-title">
+        <span class="line"><span class="word">Crafting</span></span>
+        <span class="line gradient-text"><span class="word">Next-Level</span></span>
+        <span class="line"><span class="word">Digital</span></span>
+        <span class="line gradient-text"><span class="word">Experiences</span></span>
+      </h1>
 
-            <p class="sub">
-                Clean UI • Smooth animations • Premium feel
-            </p>
+      <p class="hero-sub">
+        I build interfaces that feel alive — precise motion, sharp code, and design that stops the scroll.
+      </p>
 
-            <div class="buttons">
-                <a href="#projects" class="btn magnetic">View Work</a>
-                <a href="#contact" class="btn-outline magnetic">Hire Me</a>
-            </div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Work →</a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">12<span>+</span></div>
+          <div class="stat-label">Projects Done</div>
         </div>
-
-        <div class="right">
-            <div class="glow"></div>
-            <img src="https://picsum.photos/300">
+        <div class="stat">
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-label">Years Exp.</div>
         </div>
-
+        <div class="stat">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Satisfaction</div>
+        </div>
+      </div>
     </div>
+
+    <div class="hero-right">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <img class="avatar-img" src="https://picsum.photos/340/340?grayscale" alt="Saad Safdar">
+      </div>
+      <div class="badge-float badge-float-1">
+        <div class="badge-inner">
+          <div class="badge-icon">🎨</div>
+          <div>
+            <div class="badge-text">UI Design</div>
+            <div class="badge-sub">Figma → Code</div>
+          </div>
+        </div>
+      </div>
+      <div class="badge-float badge-float-2">
+        <div class="badge-inner">
+          <div class="badge-icon">⚡</div>
+          <div>
+            <div class="badge-text">Performance</div>
+            <div class="badge-sub">99 Lighthouse</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
 </section>
 
-<section id="projects" class="section">
-    <div class="container">
-        <h2 class="section-title">Projects</h2>
+<!-- SKILLS MARQUEE -->
+<div class="skills-strip">
+  <div class="skills-track">
+    <div class="skill-item"><span class="dot"></span>HTML & CSS</div>
+    <div class="skill-item"><span class="dot"></span>JavaScript</div>
+    <div class="skill-item"><span class="dot"></span>React.js</div>
+    <div class="skill-item"><span class="dot"></span>GSAP</div>
+    <div class="skill-item"><span class="dot"></span>Tailwind CSS</div>
+    <div class="skill-item"><span class="dot"></span>Figma</div>
+    <div class="skill-item"><span class="dot"></span>Next.js</div>
+    <div class="skill-item"><span class="dot"></span>TypeScript</div>
+    <div class="skill-item"><span class="dot"></span>Framer Motion</div>
+    <div class="skill-item"><span class="dot"></span>Node.js</div>
+    <!-- duplicate for seamless loop -->
+    <div class="skill-item"><span class="dot"></span>HTML & CSS</div>
+    <div class="skill-item"><span class="dot"></span>JavaScript</div>
+    <div class="skill-item"><span class="dot"></span>React.js</div>
+    <div class="skill-item"><span class="dot"></span>GSAP</div>
+    <div class="skill-item"><span class="dot"></span>Tailwind CSS</div>
+    <div class="skill-item"><span class="dot"></span>Figma</div>
+    <div class="skill-item"><span class="dot"></span>Next.js</div>
+    <div class="skill-item"><span class="dot"></span>TypeScript</div>
+    <div class="skill-item"><span class="dot"></span>Framer Motion</div>
+    <div class="skill-item"><span class="dot"></span>Node.js</div>
+  </div>
+</div>
 
-        <div class="grid">
-            <div class="card magnetic">
-                <img src="https://picsum.photos/500/400?1">
-                <div class="overlay"><h3>Portfolio</h3></div>
-            </div>
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Selected Work</div>
+    <h2 class="section-title reveal">Projects that<br>speak for themselves.</h2>
 
-            <div class="card magnetic">
-                <img src="https://picsum.photos/500/400?2">
-                <div class="overlay"><h3>Dashboard</h3></div>
+    <div class="projects-grid">
+      <div class="project-card featured reveal">
+        <img class="project-img" src="https://picsum.photos/900/500?1" alt="Portfolio">
+        <div class="project-info">
+          <div>
+            <div class="project-name">Portfolio Website</div>
+            <div class="project-stack">
+              <span class="tag">React</span>
+              <span class="tag">GSAP</span>
+              <span class="tag">Figma</span>
             </div>
-
-            <div class="card magnetic">
-                <img src="https://picsum.photos/500/400?3">
-                <div class="overlay"><h3>Web App</h3></div>
-            </div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
         </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img class="project-img" src="https://picsum.photos/500/400?2" alt="Dashboard">
+        <div class="project-info">
+          <div>
+            <div class="project-name">SaaS Dashboard</div>
+            <div class="project-stack">
+              <span class="tag">Next.js</span>
+              <span class="tag">TypeScript</span>
+            </div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img class="project-img" src="https://picsum.photos/500/400?3" alt="E-Commerce">
+        <div class="project-info">
+          <div>
+            <div class="project-name">E-Commerce App</div>
+            <div class="project-stack">
+              <span class="tag">React</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img class="project-img" src="https://picsum.photos/500/400?4" alt="Landing">
+        <div class="project-info">
+          <div>
+            <div class="project-name">Landing Page</div>
+            <div class="project-stack">
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">GSAP</span>
+            </div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <img class="project-img" src="https://picsum.photos/500/400?5" alt="Web App">
+        <div class="project-info">
+          <div>
+            <div class="project-name">Web Application</div>
+            <div class="project-stack">
+              <span class="tag">Vue.js</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section id="contact" class="section">
-    <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p>Email: saad@email.com</p>
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="contact-box reveal">
+      <div class="section-label center-label">Get In Touch</div>
+      <h2 class="section-title contact-title">
+        Let's build something<br>
+        <span class="gradient-text">remarkable together.</span>
+      </h2>
+      <p class="contact-desc">Open to freelance projects, full-time opportunities, and interesting collaborations. Drop me a line.</p>
+      <a href="mailto:saad@email.com" class="contact-email">saad@email.com</a>
+      <div class="social-row">
+        <a href="#" class="social-btn">GH</a>
+        <a href="#" class="social-btn">LI</a>
+        <a href="#" class="social-btn">TW</a>
+        <a href="#" class="social-btn">DR</a>
+      </div>
     </div>
+  </div>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Saad Safdar. Built with craft & caffeine.</div>
+  <div class="footer-logo">Saad.</div>
+</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-for(let i=0;i<12;i++){
-    const dot=document.createElement("div");
-
-    dot.style.position="absolute";
-    dot.style.width="3px";
-    dot.style.height="3px";
-    dot.style.background="#22d3ee";
-    dot.style.borderRadius="50%";
-
-    dot.style.top=Math.random()*100+"%";
-    dot.style.left=Math.random()*100+"%";
-
-    document.querySelector(".hero").appendChild(dot);
-
-    gsap.to(dot,{
-        y:30,
-        duration:2+Math.random()*2,
-        repeat:-1,
-        yoyo:true,
-        ease:"sine.inOut"
-    });
-}
-
-
-
-
-
-
-
