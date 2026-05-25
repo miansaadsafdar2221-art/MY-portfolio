@@ -1,21 +1,31 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// LOADER
-gsap.to(".loader", {
-    y: "-100%",
-    duration: 1.2,
-    delay: 1
+// HERO
+gsap.from(".title", {
+    y:80,
+    opacity:0,
+    duration:1
 });
 
-// HERO ANIMATION
-let tl = gsap.timeline();
-tl.from(".left h1", {y:80, opacity:0})
-  .from(".left p", {y:40, opacity:0})
-  .from(".right img", {scale:0.8, opacity:0});
+gsap.from(".sub", {
+    y:40,
+    opacity:0,
+    delay:0.3
+});
 
-// SCROLL
+gsap.from(".right", {
+    scale:0.8,
+    opacity:0,
+    duration:1,
+    delay:0.5
+});
+
+// PROJECTS
 gsap.from(".card", {
-    scrollTrigger:{trigger:".grid", start:"top 80%"},
+    scrollTrigger:{
+        trigger:".grid",
+        start:"top 80%"
+    },
     y:80,
     opacity:0,
     stagger:0.2

@@ -7,7 +7,7 @@
 <title>Saad Safdar | Portfolio</title>
 
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -17,18 +17,12 @@
 
 <body>
 
-<!-- LOADER -->
-<div class="loader">
-    <h1>Saad Safdar</h1>
-</div>
-
-<!-- CURSOR -->
 <div class="cursor"></div>
 <div class="cursor-blur"></div>
 
 <header class="navbar">
     <div class="nav">
-        <h2>Saad.</h2>
+        <h2 class="logo">Saad.</h2>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -37,16 +31,19 @@
     </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
     <div class="left">
         <p class="badge">Frontend Developer</p>
 
-        <h1>
+        <h1 class="title">
             Crafting <br>
-            <span>Elite Web Experiences</span>
+            <span>Next-Level Digital Experiences</span>
         </h1>
 
-        <p class="sub">Smooth, interactive & premium UI.</p>
+        <p class="sub">
+            Clean UI • Smooth animations • Premium feel
+        </p>
 
         <div class="buttons">
             <a href="#projects" class="btn magnetic">View Work</a>
@@ -56,33 +53,45 @@
 
     <div class="right">
         <div class="glow"></div>
-        <img src="https://picsum.photos/300">
+        <img src="https://picsum.photos/300" alt="">
     </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects" class="section">
-    <h2>Projects</h2>
+    <h2 class="section-title">Projects</h2>
 
     <div class="grid">
+
         <div class="card magnetic">
             <img src="https://picsum.photos/500/400?1">
-            <div class="overlay"><h3>Portfolio</h3></div>
+            <div class="overlay">
+                <h3>Portfolio</h3>
+                <p>Modern UI</p>
+            </div>
         </div>
 
         <div class="card magnetic">
             <img src="https://picsum.photos/500/400?2">
-            <div class="overlay"><h3>Dashboard</h3></div>
+            <div class="overlay">
+                <h3>Dashboard</h3>
+                <p>Clean Design</p>
+            </div>
         </div>
 
         <div class="card magnetic">
             <img src="https://picsum.photos/500/400?3">
-            <div class="overlay"><h3>App</h3></div>
+            <div class="overlay">
+                <h3>Web App</h3>
+                <p>Interactive</p>
+            </div>
         </div>
+
     </div>
 </section>
 
 <section id="contact" class="section">
-    <h2>Contact</h2>
+    <h2 class="section-title">Contact</h2>
     <p>Email: saad@email.com</p>
 </section>
 
