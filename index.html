@@ -5,205 +5,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saad Safdar | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
     --bg: #080c14;
-    --bg2: #0d1220;
     --primary: #38bdf8;
     --primary-dim: rgba(56,189,248,0.12);
     --primary-glow: rgba(56,189,248,0.35);
     --text: #e2e8f0;
     --muted: #64748b;
     --card: #111827;
-    --border: rgba(56,189,248,0.15);
 
-    /* Light mode */
     --light-bg: #f8fafc;
     --light-text: #0f172a;
     --light-card: #ffffff;
-
-    --nav-h: 68px;
 }
 
-/* Reset */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-
-body {
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
     font-family:'DM Sans',sans-serif;
     background:var(--bg);
     color:var(--text);
-    overflow-x:hidden;
-    transition: background .3s, color .3s;
+    transition:.3s;
 }
 
 /* LIGHT MODE */
-body.light {
+body.light{
     background:var(--light-bg);
     color:var(--light-text);
 }
-body.light .card,
-body.light .contact-card,
-body.light .skill-chip {
-    background:var(--light-card);
-}
-body.light .hero-sub,
-body.light .about-text p,
-body.light .contact-wrapper p {
-    color:#475569;
-}
+body.light .card{background:var(--light-card);}
 
 /* NAVBAR */
-.navbar {
+.navbar{
     position:fixed;
-    top:0; left:0; right:0;
-    z-index:1000;
-    height:var(--nav-h);
-    transition:.3s;
+    width:100%;
+    top:0;
+    background:rgba(8,12,20,.8);
+    backdrop-filter:blur(10px);
 }
-.navbar.scrolled {
-    background:rgba(8,12,20,0.85);
-    backdrop-filter:blur(20px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.4);
-}
-
-.nav-container {
-    max-width:1140px;
+.nav-container{
+    max-width:1100px;
     margin:auto;
-    padding:0 28px;
-    height:100%;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
+    padding:15px;
 }
 
-.logo {
+.logo{
     font-family:'Syne';
     font-weight:800;
-    font-size:1.5rem;
     color:var(--primary);
     text-decoration:none;
 }
 
-.nav-links {
+.nav-links{
     list-style:none;
     display:flex;
+    gap:10px;
     align-items:center;
-    gap:6px;
 }
 
-.nav-links a {
+.nav-links a{
     text-decoration:none;
     color:var(--muted);
     padding:8px 14px;
     border-radius:8px;
-    font-size:.9rem;
+    transition:.3s;
 }
 
-.nav-links a:hover { color:var(--primary); }
+/* HOVER */
+.nav-links a:hover{
+    color:var(--primary);
+    background:var(--primary-dim);
+}
 
-.nav-cta {
+/* CTA */
+.nav-cta{
     background:var(--primary);
-    color:#000 !important;
+    color:#000!important;
     font-weight:600;
-    border-radius:8px;
+}
+.nav-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 15px var(--primary-glow);
 }
 
-/* Theme Button */
-#themeToggle {
-    font-size:1rem;
-}
-
-/* Mobile */
-.menu-btn { display:none; }
-
-/* SECTIONS */
-.container { max-width:1140px; margin:auto; padding:0 28px; }
-
-.hero {
-    min-height:100vh;
+/* HERO */
+.hero{
+    height:100vh;
     display:flex;
     align-items:center;
+    justify-content:center;
+    text-align:center;
 }
-
-.hero h1 {
+.hero h1{
     font-family:'Syne';
     font-size:3rem;
 }
-.accent { color:var(--primary); }
+.accent{color:var(--primary);}
 
-.btn-primary {
+/* BUTTONS */
+.btn-primary{
     background:var(--primary);
-    padding:12px 24px;
+    padding:12px 20px;
     border-radius:8px;
-    text-decoration:none;
     color:#000;
-}
-.btn-outline {
-    border:1px solid #ccc;
-    padding:12px 24px;
-    border-radius:8px;
     text-decoration:none;
+}
+.btn-outline{
+    border:1px solid #ccc;
+    padding:12px 20px;
+    border-radius:8px;
     color:inherit;
+    text-decoration:none;
 }
 
-.section { padding:100px 0; }
+/* SECTION */
+.section{padding:80px 20px;text-align:center;}
 
-.grid {
+.grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
-
-.card {
+.card{
     background:var(--card);
     padding:20px;
-    border-radius:12px;
-    transition:.3s;
+    border-radius:10px;
 }
-.card:hover { transform:translateY(-5px); }
 
-/* Mobile drawer */
-.mobile-drawer {
+/* MOBILE */
+.menu-btn{
+    display:none;
+    cursor:pointer;
+}
+
+.mobile-drawer{
     position:fixed;
-    top:0; right:0;
-    width:260px;
+    right:0;
+    top:0;
+    width:250px;
     height:100%;
     background:#0d1220;
-    padding:80px 20px;
     transform:translateX(100%);
     transition:.3s;
+    padding:60px 20px;
 }
-.mobile-drawer.open { transform:translateX(0); }
+.mobile-drawer.open{transform:translateX(0);}
+.mobile-drawer a{
+    display:block;
+    margin-bottom:15px;
+    color:white;
+    text-decoration:none;
+}
 
-.mobile-overlay {
+.overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.5);
     opacity:0;
     pointer-events:none;
 }
-.mobile-overlay.open {
+.overlay.open{
     opacity:1;
     pointer-events:all;
 }
 
-/* Responsive */
 @media(max-width:768px){
-    .grid { grid-template-columns:1fr; }
-    .nav-links { display:none; }
-    .menu-btn { display:block; }
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar" id="navbar">
+<header class="navbar">
 <div class="nav-container">
+
 <a href="#" class="logo">Saad.dev</a>
 
 <ul class="nav-links">
@@ -211,65 +195,56 @@ body.light .contact-wrapper p {
 <li><a href="#about">About</a></li>
 <li><a href="#projects">Projects</a></li>
 
-<!-- NEW -->
 <li><a href="#contact" class="nav-cta">Hire Me</a></li>
-<li><a href="cv.pdf" download class="nav-cta">Download CV</a></li>
+
+<!-- FIXED CV BUTTON -->
+<li><a href="Saad_Safdar_CV.pdf" download class="nav-cta">Download CV</a></li>
+
+<!-- THEME BUTTON -->
+<li><a href="#" id="themeToggle">🌙</a></li>
 </ul>
 
-<li><a href="#" id="themeToggle">🌙</a></li>
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
 </div>
 </header>
-  
-<div class="mobile-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
 <div class="mobile-drawer" id="drawer">
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Projects</a>
-<a href="cv.pdf" download>Download CV</a>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="Saad_Safdar_CV.pdf" download>Download CV</a>
 <a href="#" onclick="toggleTheme()">Toggle Theme</a>
-<a href="#">Contact</a>
+<a href="#contact">Contact</a>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="home">
-<div class="container">
-<h1>Building the <span class="accent">Future</span></h1>
-<br>
+<div>
+<h1>Building the <span class="accent">Future</span></h1><br>
 <a href="#projects" class="btn-primary">View Work</a>
 <a href="#contact" class="btn-outline">Contact</a>
 </div>
 </section>
 
-<!-- ABOUT -->
 <section class="section" id="about">
-<div class="container">
-<h2>About Me</h2>
+<h2>About</h2>
 <p>I build modern websites using HTML, CSS, JS.</p>
-</div>
 </section>
 
-<!-- PROJECTS -->
 <section class="section" id="projects">
-<div class="container">
 <h2>Projects</h2>
-
 <div class="grid">
 <div class="card">Project 1</div>
 <div class="card">Project 2</div>
 <div class="card">Project 3</div>
 </div>
-
-</div>
 </section>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
-<div class="container">
 <h2>Contact</h2>
-<p>Email: saad@email.com</p>
-</div>
+<p>saad@email.com</p>
 </section>
 
 <footer style="text-align:center;padding:20px;">
@@ -277,13 +252,7 @@ body.light .contact-wrapper p {
 </footer>
 
 <script>
-/* Navbar scroll */
-window.addEventListener('scroll',()=>{
-document.getElementById('navbar')
-.classList.toggle('scrolled',window.scrollY>20);
-});
-
-/* Mobile */
+/* MOBILE MENU */
 const drawer=document.getElementById('drawer');
 const overlay=document.getElementById('overlay');
 
@@ -302,10 +271,8 @@ btn.textContent='☀️';
 
 function toggleTheme(){
 document.body.classList.toggle('light');
-
 const isLight=document.body.classList.contains('light');
 localStorage.setItem('theme',isLight?'light':'dark');
-
 btn.textContent=isLight?'☀️':'🌙';
 }
 
