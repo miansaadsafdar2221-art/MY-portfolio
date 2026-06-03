@@ -3,266 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saad Safdar | Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
+<title>Saad Safdar | Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-    --bg: #080c14;
-    --primary: #38bdf8;
-    --primary-dim: rgba(56,189,248,0.12);
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --card: #111827;
-
-    --light-bg: #f8fafc;
-    --light-text: #0f172a;
+/* ── VARIABLES ── */
+:root{
+  --bg:#04070f;
+  --surface:#090e1a;
+  --card:#0d1424;
+  --border:rgba(255,255,255,0.07);
+  --accent:#00e5ff;
+  --accent2:#7c3aed;
+  --text:#e8edf5;
+  --muted:#5a6a80;
+  --nav-bg:rgba(4,7,15,.75);
+  --drawer-bg:#080c18;
+  --toggle-bg:#1a2236;
+  --toggle-knob:#00e5ff;
+  --toggle-icon-sun:transparent;
+  --toggle-icon-moon:#00e5ff;
 }
-
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-    font-family:'DM Sans',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:.3s;
-}
-
-/* LIGHT MODE */
 body.light{
-    background:var(--light-bg);
-    color:var(--light-text);
+  --bg:#f0f4f8;
+  --surface:#e2eaf4;
+  --card:#ffffff;
+  --border:rgba(0,0,0,0.08);
+  --text:#0d1117;
+  --muted:#6b7a8d;
+  --nav-bg:rgba(240,244,248,.82);
+  --drawer-bg:#f8fafc;
+  --toggle-bg:#d0e4f7;
+  --toggle-knob:#f97316;
+  --toggle-icon-sun:#f97316;
+  --toggle-icon-moon:transparent;
 }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none;transition:background .4s,color .4s;}
 
-/* NAVBAR */
-.navbar{
-    position:fixed;
-    width:100%;
-    top:0;
-    background:rgba(8,12,20,.8);
-    backdrop-filter:blur(10px);
-}
-.nav-container{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px;
-}
+/* ── CURSOR ── */
+#cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .3s;}
+#cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5;transition:width .22s,height .22s,opacity .2s,border-color .3s;}
+@media(hover:none){#cur,#cur-ring{display:none;}body{cursor:auto;}}
 
-.logo{
-    font-family:'Syne';
-    font-weight:800;
-    color:var(--primary);
-    text-decoration:none;
-}
+/* ── NOISE ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.35;}
 
-.nav-links{
-    list-style:none;
-    display:flex;
-    gap:10px;
-    align-items:center;
-}
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .4s,border-color .4s;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--accent);text-decoration:none;}
+.logo span{color:var(--text);}
+.nav-links{list-style:none;display:flex;gap:4px;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:8px 14px;border-radius:6px;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%) scaleX(0);width:calc(100% - 20px);height:1px;background:var(--accent);transition:transform .3s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:translateX(-50%) scaleX(1);}
+.nav-cv{background:transparent;border:1px solid var(--accent);color:var(--accent)!important;border-radius:6px;padding:7px 16px;font-size:.78rem;letter-spacing:1.5px;font-weight:600;transition:background .2s,color .2s!important;display:flex;align-items:center;gap:6px;}
+.nav-cv:hover{background:var(--accent)!important;color:#000!important;}
+.nav-cv::after{display:none!important;}
 
-.nav-links a{
-    text-decoration:none;
-    color:var(--muted);
-    padding:8px 14px;
-    border-radius:8px;
-    transition:.3s;
-}
+/* ── DAY/NIGHT TOGGLE ── */
+.theme-toggle{display:flex;align-items:center;gap:8px;cursor:none;}
+.toggle-track{width:52px;height:28px;background:var(--toggle-bg);border-radius:100px;position:relative;border:1px solid var(--border);transition:background .35s,border-color .35s;flex-shrink:0;}
+.toggle-knob{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--toggle-knob);transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .35s;display:flex;align-items:center;justify-content:center;}
+body.light .toggle-knob{transform:translateX(24px);}
+.toggle-knob svg{width:12px;height:12px;transition:opacity .3s;}
+.sun-icon{position:absolute;opacity:0;stroke:white;fill:none;stroke-width:2;}
+.moon-icon{position:absolute;opacity:1;stroke:var(--bg);fill:none;stroke-width:2;}
+body.light .sun-icon{opacity:1;}
+body.light .moon-icon{opacity:0;}
+.toggle-label{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);transition:color .3s;user-select:none;min-width:36px;}
 
-/* CLEAN HOVER (NO COLOR BUTTONS) */
-.nav-links a:hover{
-    color:var(--primary);
-    background:var(--primary-dim);
-}
+/* ── HAMBURGER ── */
+.menu-btn{display:none;flex-direction:column;gap:5px;cursor:none;padding:6px;background:transparent;border:none;}
+.menu-btn span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s,background .3s;}
+.menu-btn.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.menu-btn.active span:nth-child(2){opacity:0;}
+.menu-btn.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
-.hero h1{
-    font-family:'Syne';
-    font-size:3rem;
-}
-.accent{color:var(--primary);}
+/* ── DRAWER ── */
+.drawer{position:fixed;top:0;right:0;width:280px;height:100%;background:var(--drawer-bg);border-left:1px solid var(--border);z-index:200;transform:translateX(105%);transition:transform .42s cubic-bezier(.77,0,.18,1),background .4s;padding:80px 28px 30px;display:flex;flex-direction:column;gap:6px;}
+.drawer.open{transform:translateX(0);}
+.drawer a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500;padding:12px 16px;border-radius:8px;transition:color .2s,background .2s;border:1px solid transparent;letter-spacing:.5px;}
+.drawer a:hover{color:var(--text);background:var(--surface);}
+.drawer-toggle{margin-top:auto;padding:14px 16px;display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:8px;cursor:none;}
 
-/* BUTTONS */
-.btn-primary{
-    background:var(--primary);
-    padding:12px 20px;
-    border-radius:8px;
-    color:#000;
-    text-decoration:none;
-}
-.btn-outline{
-    border:1px solid #ccc;
-    padding:12px 20px;
-    border-radius:8px;
-    color:inherit;
-    text-decoration:none;
-}
+/* ── OVERLAY ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:150;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.overlay.open{opacity:1;pointer-events:all;}
 
-/* SECTION */
-.section{padding:80px 20px;text-align:center;}
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px clamp(20px,5vw,80px) 60px;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,black 30%,transparent 100%);transition:opacity .4s;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;animation:orbFloat 8s ease-in-out infinite;}
+.orb1{width:min(600px,90vw);height:min(600px,90vw);background:radial-gradient(circle,rgba(0,229,255,.09) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+.orb2{width:min(400px,60vw);height:min(400px,60vw);background:radial-gradient(circle,rgba(124,58,237,.08) 0%,transparent 70%);top:20%;left:65%;transform:translate(-50%,-50%);animation-delay:-4s;}
+.orb3{width:min(300px,50vw);height:min(300px,50vw);background:radial-gradient(circle,rgba(0,229,255,.05) 0%,transparent 70%);top:75%;left:25%;transform:translate(-50%,-50%);animation-delay:-2s;}
+@keyframes orbFloat{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.08);}}
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-.card{
-    background:var(--card);
-    padding:20px;
-    border-radius:10px;
-}
+.hero-inner{position:relative;z-index:1;text-align:center;max-width:900px;width:100%;}
 
-/* MOBILE */
-.menu-btn{
-    display:none;
-    cursor:pointer;
-}
+/* staggered entry */
+.hero-inner>*{opacity:0;transform:translateY(30px);animation:heroIn .8s ease forwards;}
+.hero-tag{animation-delay:.1s;}
+h1.hero-title{animation-delay:.25s;}
+.hero-sub{animation-delay:.4s;}
+.hero-btns{animation-delay:.55s;}
+@keyframes heroIn{to{opacity:1;transform:translateY(0);}}
 
-.mobile-drawer{
-    position:fixed;
-    right:0;
-    top:0;
-    width:250px;
-    height:100%;
-    background:#0d1220;
-    transform:translateX(100%);
-    transition:.3s;
-    padding:60px 20px;
-}
-.mobile-drawer.open{transform:translateX(0);}
-.mobile-drawer a{
-    display:block;
-    margin-bottom:15px;
-    color:white;
-    text-decoration:none;
-}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:100px;padding:6px 18px;font-size:.78rem;color:var(--muted);letter-spacing:1px;margin-bottom:28px;background:rgba(255,255,255,.02);}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 6px var(--accent);}50%{box-shadow:0 0 20px var(--accent),0 0 40px rgba(0,229,255,.3);}}
 
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    opacity:0;
-    pointer-events:none;
-}
-.overlay.open{
-    opacity:1;
-    pointer-events:all;
-}
+h1.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,13vw,10rem);line-height:.88;letter-spacing:2px;margin-bottom:4px;}
+h1.hero-title .line2{color:transparent;-webkit-text-stroke:1px var(--accent);}
+.hero-sub{font-size:clamp(.9rem,2vw,1.05rem);color:var(--muted);max-width:480px;margin:22px auto 38px;line-height:1.75;font-weight:300;}
 
-@media(max-width:768px){
-    .nav-links{display:none;}
-    .menu-btn{display:block;}
-    .grid{grid-template-columns:1fr;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#000;border:none;padding:13px 26px;border-radius:8px;font-size:.88rem;font-weight:600;text-decoration:none;letter-spacing:.5px;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .2s;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,229,255,.35);}
+.btn-primary:hover::before{background:rgba(255,255,255,.1);}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);padding:13px 26px;border-radius:8px;font-size:.88rem;font-weight:500;text-decoration:none;transition:border-color .2s,color .2s,transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,229,255,.1);}
+
+/* scroll indicator */
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;animation:heroIn .8s .8s ease forwards;opacity:0;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollSlide 2s infinite;}
+@keyframes scrollSlide{0%{transform:scaleY(0);transform-origin:top;opacity:1;}50%{transform:scaleY(1);transform-origin:top;opacity:1;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}}
+
+/* ── STRIP ── */
+.strip{padding:clamp(28px,4vw,48px) clamp(20px,5vw,60px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:clamp(30px,6vw,80px);flex-wrap:wrap;position:relative;z-index:1;transition:border-color .4s;}
+.strip-item{text-align:center;}
+.strip-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--accent);line-height:1;transition:color .3s;}
+.strip-label{font-size:.72rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+
+/* ── SECTION COMMON ── */
+section{padding:clamp(60px,8vw,100px) clamp(20px,5vw,60px);max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.section-tag{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.section-tag::before{content:'';display:block;width:28px;height:1px;background:var(--accent);}
+h2.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;margin-bottom:16px;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,60px);align-items:center;margin-top:50px;}
+.about-img-frame{width:100%;aspect-ratio:1/1;border-radius:16px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;transition:border-color .4s,box-shadow .3s,background .4s;}
+.about-img-frame:hover{border-color:rgba(0,229,255,.3);box-shadow:0 0 60px rgba(0,229,255,.06);}
+.about-img-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.04),rgba(124,58,237,.04));}
+.corner{position:absolute;width:28px;height:28px;border-color:var(--accent);border-style:solid;border-width:0;}
+.corner.tl{top:14px;left:14px;border-top-width:2px;border-left-width:2px;border-radius:4px 0 0 0;}
+.corner.tr{top:14px;right:14px;border-top-width:2px;border-right-width:2px;border-radius:0 4px 0 0;}
+.corner.bl{bottom:14px;left:14px;border-bottom-width:2px;border-left-width:2px;border-radius:0 0 0 4px;}
+.corner.br{bottom:14px;right:14px;border-bottom-width:2px;border-right-width:2px;border-radius:0 0 4px 0;}
+
+/* floating emoji */
+.float-emoji{animation:floatBob 4s ease-in-out infinite;}
+@keyframes floatBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+.about-text p{color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:18px;font-size:.95rem;}
+.skills-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.skill-tag{padding:6px 14px;border:1px solid var(--border);border-radius:6px;font-size:.78rem;color:var(--muted);background:var(--card);transition:border-color .2s,color .2s,transform .2s,box-shadow .2s;letter-spacing:.3px;cursor:default;}
+.skill-tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,229,255,.12);}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px;}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s,background .4s;position:relative;}
+.project-card:hover{border-color:rgba(0,229,255,.3);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,229,255,.07);}
+.project-thumb{height:175px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);transition:background .4s;}
+.project-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.04),rgba(124,58,237,.04));}
+.project-thumb .thumb-emoji{transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.project-card:hover .thumb-emoji{transform:scale(1.25) rotate(-5deg);}
+.project-num{position:absolute;top:10px;right:14px;font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(255,255,255,.05);line-height:1;transition:color .3s;}
+.project-card:hover .project-num{color:rgba(0,229,255,.08);}
+.project-body{padding:20px;}
+.project-body h3{font-size:.98rem;font-weight:600;margin-bottom:8px;}
+.project-body p{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:14px;font-weight:300;}
+.project-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.project-tag{font-size:.7rem;padding:3px 10px;border-radius:4px;background:rgba(0,229,255,.06);color:var(--accent);border:1px solid rgba(0,229,255,.14);letter-spacing:.4px;}
+.project-link{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;color:var(--accent);text-decoration:none;margin-top:14px;opacity:.65;transition:opacity .2s;letter-spacing:.4px;}
+.project-link:hover{opacity:1;}
+.project-link svg{transition:transform .2s;}
+.project-link:hover svg{transform:translate(2px,-2px);}
+
+/* ── CONTACT ── */
+.contact-box{margin-top:50px;border:1px solid var(--border);border-radius:16px;padding:clamp(36px,6vw,64px) clamp(24px,6vw,64px);background:var(--card);text-align:center;position:relative;overflow:hidden;transition:background .4s,border-color .4s;}
+.contact-box::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:min(500px,90%);height:300px;background:radial-gradient(circle,rgba(0,229,255,.07) 0%,transparent 70%);pointer-events:none;}
+.contact-box h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3rem);margin-bottom:10px;}
+.contact-box p{color:var(--muted);margin-bottom:28px;font-weight:300;}
+.contact-email{font-size:1rem;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;padding:12px 24px;border:1px solid rgba(0,229,255,.2);border-radius:8px;transition:background .2s,border-color .2s,transform .2s;}
+.contact-email:hover{background:rgba(0,229,255,.05);border-color:var(--accent);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:clamp(20px,3vw,30px) clamp(20px,5vw,40px);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;flex-wrap:wrap;gap:14px;transition:border-color .4s;}
+footer .logo-sm{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:3px;color:var(--accent);}
+footer p{font-size:.78rem;color:var(--muted);}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.up{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.up{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.up{opacity:1;transform:translateX(0);}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity .6s ease,transform .6s ease;}
+.reveal-scale.up{opacity:1;transform:scale(1);}
+
+/* stagger children */
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.stagger.up>*:nth-child(1){transition-delay:.05s;}
+.stagger.up>*:nth-child(2){transition-delay:.15s;}
+.stagger.up>*:nth-child(3){transition-delay:.25s;}
+.stagger.up>*:nth-child(4){transition-delay:.35s;}
+.stagger.up>*{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .about-img{display:none;}
+  .projects-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:700px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .menu-btn{display:flex;}
+  .projects-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+  .hero-scroll{display:none;}
+}
+@media(max-width:480px){
+  .strip{gap:20px;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .btn-primary,.btn-ghost{width:100%;max-width:260px;justify-content:center;}
 }
 </style>
 </head>
-
 <body>
 
-<header class="navbar">
-<div class="nav-container">
+<div id="cur"></div>
+<div id="cur-ring"></div>
 
-<a href="#" class="logo">Saad.dev</a>
-
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Hire Me</a></li>
-<li><a href="Saad_Safdar_CV.pdf" download>Download CV</a></li>
-<li><a href="#" id="themeToggle">🌙</a></li>
-</ul>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-</div>
-</header>
-
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
-<div class="mobile-drawer" id="drawer">
-  <ul>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="assets/Saad_Safdar_CV.pdf">Download CV</a>
-<a href="#" onclick="toggleTheme()">Toggle Theme</a>
-<a href="#contact">Contact</a>
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">SAAD<span>.DEV</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a href="Saad_Safdar_CV.pdf" download="Saad_Safdar_CV.pdf" class="nav-cv">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
+    </li>
+    <li>
+      <!-- DAY / NIGHT TOGGLE -->
+      <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme" tabindex="0">
+        <div class="toggle-track">
+          <div class="toggle-knob">
+            <!-- sun -->
+            <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+            <!-- moon -->
+            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+        </div>
+        <span class="toggle-label" id="toggleLabel">DARK</span>
+      </div>
+    </li>
   </ul>
+  <button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- OVERLAY + DRAWER -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="drawer" id="drawer">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="Saad_Safdar_CV.pdf" download="Saad_Safdar_CV.pdf" style="color:var(--accent);border-color:rgba(0,229,255,.25);">⬇ Download CV</a>
+  <div class="drawer-toggle" onclick="toggleTheme()">
+    <div class="toggle-track" style="pointer-events:none;">
+      <div class="toggle-knob">
+        <svg class="sun-icon" viewBox="0 0 24 24" style="position:absolute;"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" style="position:absolute;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </div>
+    </div>
+    <span style="font-size:.85rem;color:var(--muted);">Toggle Theme</span>
+  </div>
 </div>
 
+<!-- HERO -->
 <section class="hero" id="home">
-<div>
-<h1>Building the <span class="accent">Future</span></h1><br>
-<a href="#projects" class="btn-primary">View Work</a>
-<a href="#contact" class="btn-outline">Contact</a>
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="dot"></span> Available for freelance work</div>
+    <h1 class="hero-title">SAAD<br><span class="line2">SAFDAR</span></h1>
+    <p class="hero-sub">Front-end developer crafting immersive digital experiences with HTML, CSS & JavaScript.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">
+        View Work
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="strip stagger">
+  <div class="strip-item"><div class="strip-num" data-count="12">0</div><div class="strip-label">Projects Built</div></div>
+  <div class="strip-item"><div class="strip-num" data-count="3">0</div><div class="strip-label">Years Coding</div></div>
+  <div class="strip-item"><div class="strip-num" data-count="8">0</div><div class="strip-label">Happy Clients</div></div>
+  <div class="strip-item"><div class="strip-num" data-count="100">0</div><div class="strip-label">% Passion</div></div>
 </div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag reveal">About Me</div>
+  <h2 class="section-title reveal" style="transition-delay:.08s;">Turning Ideas Into<br>Digital Reality</h2>
+  <div class="about-grid">
+    <div class="about-img reveal-left">
+      <div class="about-img-frame">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+        <span class="float-emoji">💻</span>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <p>I'm Saad Safdar — a front-end developer based in Pakistan with a passion for building clean, performant, and visually engaging web experiences.</p>
+      <p>I focus on the intersection of design and code, creating interfaces that don't just work — they feel right. Every pixel and interaction is intentional.</p>
+      <p>When I'm not coding, I'm exploring design systems, studying UI patterns, and experimenting with creative web animations.</p>
+      <div class="skills-row">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Responsive Design</span>
+        <span class="skill-tag">UI/UX</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Performance</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="about">
-<h2>About</h2>
-<p>I build modern websites using HTML, CSS, JS.</p>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag reveal">My Work</div>
+  <h2 class="section-title reveal" style="transition-delay:.08s;">Selected Projects</h2>
+  <div class="projects-grid stagger">
+    <div class="project-card">
+      <div class="project-thumb"><span class="thumb-emoji">🛒</span><div class="project-num">01</div></div>
+      <div class="project-body">
+        <h3>E-Commerce Storefront</h3>
+        <p>A full-featured online store with cart functionality, product filtering, and smooth checkout flow.</p>
+        <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JS</span></div>
+        <a href="#" class="project-link">View Project <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb"><span class="thumb-emoji">📊</span><div class="project-num">02</div></div>
+      <div class="project-body">
+        <h3>Analytics Dashboard</h3>
+        <p>A data visualization dashboard with real-time charts, dark mode support, and responsive layout.</p>
+        <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">Chart.js</span><span class="project-tag">CSS</span></div>
+        <a href="#" class="project-link">View Project <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb"><span class="thumb-emoji">🎨</span><div class="project-num">03</div></div>
+      <div class="project-body">
+        <h3>Creative Agency Site</h3>
+        <p>A bold, animated agency landing page with scroll-triggered effects and immersive typography.</p>
+        <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">GSAP</span></div>
+        <a href="#" class="project-link">View Project <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="projects">
-<h2>Projects</h2>
-<div class="grid">
-<div class="card">Project 1</div>
-<div class="card">Project 2</div>
-<div class="card">Project 3</div>
-</div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag reveal">Contact</div>
+  <h2 class="section-title reveal" style="transition-delay:.08s;">Let's Build Something</h2>
+  <div class="contact-box reveal-scale" style="transition-delay:.15s;">
+    <h3>Got a Project in Mind?</h3>
+    <p>I'm always open to discussing new opportunities, creative ideas, or just a chat.</p>
+    <br>
+    <a href="mailto:saad@email.com" class="contact-email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      saad@email.com
+    </a>
+    <br><br>
+    <a href="Saad_Safdar_CV.pdf" download="Saad_Safdar_CV.pdf" class="btn-primary" style="display:inline-flex;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download CV
+    </a>
+  </div>
 </section>
 
-<section class="section" id="contact">
-<h2>Contact</h2>
-<p>saad@email.com</p>
-</section>
-
-<footer style="text-align:center;padding:20px;">
-© 2026 Saad Safdar
+<!-- FOOTER -->
+<footer>
+  <span class="logo-sm">SAAD.DEV</span>
+  <p>© 2026 Saad Safdar. All rights reserved.</p>
+  <p style="font-size:.72rem;">Built with ♥ in Pakistan</p>
 </footer>
 
 <script>
-const drawer=document.getElementById('drawer');
-const overlay=document.getElementById('overlay');
-
-function toggleMenu(){
-const open=drawer.classList.toggle('open');
-overlay.classList.toggle('open',open);
-}
-
-/* THEME */
-const btn=document.getElementById('themeToggle');
-
-if(localStorage.getItem('theme')==='light'){
-document.body.classList.add('light');
-btn.textContent='☀️';
-}
-
-function toggleTheme(){
-document.body.classList.toggle('light');
-const isLight=document.body.classList.contains('light');
-localStorage.setItem('theme',isLight?'light':'dark');
-btn.textContent=isLight?'☀️':'🌙';
-}
-
-btn.addEventListener('click',(e)=>{
-e.preventDefault();
-toggleTheme();
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function lerpRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lerpRing);}
+lerpRing();
+document.querySelectorAll('a,button,.menu-btn,.project-card,.skill-tag,.theme-toggle,.toggle-track').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='52px';ring.style.height='52px';ring.style.opacity='.35';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='34px';ring.style.height='34px';ring.style.opacity='.5';});
 });
-</script>
 
+/* ── MENU ── */
+function toggleMenu(){
+  const d=document.getElementById('drawer'),o=document.getElementById('overlay'),b=document.getElementById('menuBtn');
+  d.classList.toggle('open');o.classList.toggle('open');b.classList.toggle('active');
+}
+function closeMenu(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('menuBtn').classList.remove('active');
+}
+
+/* ── THEME ── */
+function applyTheme(isLight){
+  document.body.classList.toggle('light',isLight);
+  const lbl=document.getElementById('toggleLabel');
+  if(lbl)lbl.textContent=isLight?'LIGHT':'DARK';
+  localStorage.setItem('theme',isLight?'light':'dark');
+}
+function toggleTheme(){applyTheme(!document.body.classList.contains('light'));}
+// init
+if(localStorage.getItem('theme')==='light')applyTheme(true);
+document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+document.getElementById('themeToggle').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')toggleTheme();});
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('up');});
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.stagger').forEach(el=>io.observe(el));
+
+/* ── COUNTER ── */
+function animCount(el,target){
+  let s=0;const dur=1600;
+  const run=ts=>{
+    if(!s)s=ts;
+    const p=Math.min((ts-s)/dur,1);
+    const e2=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(e2*target)+(target===100?'+':'');
+    if(p<1)requestAnimationFrame(run);
+  };
+  requestAnimationFrame(run);
+}
+const cio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-count]').forEach(el=>animCount(el,parseInt(el.dataset.count)));
+      cio.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.strip').forEach(el=>cio.observe(el));
+</script>
 </body>
 </html>
